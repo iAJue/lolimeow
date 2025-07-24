@@ -3,6 +3,7 @@
  * @link https://www.boxmoe.com
  * @package lolimeow
  */
+defined('ABSPATH') or die('This file can not be loaded directly.');
 //链接输出
 function get_login_url() {	
 $id=get_boxmoe('users_login');

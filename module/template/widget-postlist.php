@@ -1,4 +1,5 @@
 <?php
+defined('ABSPATH') or die('This file can not be loaded directly.');
 class widget_postlist extends WP_Widget {
 
 	function __construct(){

@@ -1,4 +1,5 @@
 <?php
+defined('ABSPATH') or die('This file can not be loaded directly.');
 class widget_links extends WP_Widget {
 
     // 构造函数

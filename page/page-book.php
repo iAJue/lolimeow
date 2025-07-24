@@ -6,6 +6,7 @@
  * author 阿珏酱
  */
 
+defined('ABSPATH') or die('This file can not be loaded directly.');
 get_header();
 
 preg_match('/<code class="language-json">(.*)<\/code>/s', get_the_content(), $matches);

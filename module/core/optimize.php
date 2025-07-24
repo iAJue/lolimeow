@@ -4,6 +4,7 @@
  * @package lolimeow
  */
  
+defined('ABSPATH') or die('This file can not be loaded directly.');
 //============默认开启项=============
  //隐藏管理条
 function hide_admin_bar($flag) {

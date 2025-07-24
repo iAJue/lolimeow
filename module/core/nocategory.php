@@ -3,6 +3,7 @@
  * @link https://www.boxmoe.com
  * @package lolimeow
  */
+defined('ABSPATH') or die('This file can not be loaded directly.');
 add_action( 'load-themes.php',  'no_category_base_refresh_rules');
 add_action('created_category', 'no_category_base_refresh_rules');
 add_action('edited_category', 'no_category_base_refresh_rules');

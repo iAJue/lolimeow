@@ -1,4 +1,5 @@
 <?php
+defined('ABSPATH') or die('This file can not be loaded directly.');
 function optionsframework_option_name() {
 	return 'options-framework-theme';
 }

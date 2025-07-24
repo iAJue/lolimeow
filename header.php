@@ -3,6 +3,7 @@
  * @package lolimeow@boxmoe themes
  * @link https://www.boxmoe.com
  */
+defined('ABSPATH') or die('This file can not be loaded directly.');
 ?>
 <!--
                 ~~~~~~~  ~~~~~~~

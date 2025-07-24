@@ -3,6 +3,7 @@
  * @link https://www.boxmoe.com
  * @package lolimeow
  */
+defined('ABSPATH') or die('This file can not be loaded directly.');
 if( get_boxmoe('smtpmail') ) {
 add_action('phpmailer_init', 'mail_smtp');
 function mail_smtp( $phpmailer ) {

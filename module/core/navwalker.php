@@ -3,6 +3,7 @@
  * @link https://www.boxmoe.com
  * @package lolimeow
  */
+defined('ABSPATH') or die('This file can not be loaded directly.');
 // bootstrap 5 wp_nav_menu walker
 class bootstrap_5_wp_nav_menu_walker extends Walker_Nav_menu
 {

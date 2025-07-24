@@ -1,4 +1,5 @@
 <?php
+defined('ABSPATH') or die('This file can not be loaded directly.');
 add_action('widgets_init','unregister_d_widget');
 function unregister_d_widget(){
     unregister_widget('WP_Widget_Recent_Comments');

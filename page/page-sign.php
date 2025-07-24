@@ -4,6 +4,7 @@ Template Name: Boxmoe注册页
  * @link https://www.boxmoe.com
  * @package lolimeow
 */
+defined('ABSPATH') or die('This file can not be loaded directly.');
 	
 //如果用户已经登陆那么跳转到首页
 if (is_user_logged_in()){

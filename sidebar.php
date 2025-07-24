@@ -3,6 +3,7 @@
  * @link https://www.boxmoe.com
  * @package lolimeow
  */
+defined('ABSPATH') or die('This file can not be loaded directly.');
 ?>
 
 <div class="blog-sidebar col-lg-4 fadein-bottom">

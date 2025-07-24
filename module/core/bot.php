@@ -4,6 +4,7 @@
  * @package lolimeow
  */
 
+defined('ABSPATH') or die('This file can not be loaded directly.');
 //机器人配置
 
 if( get_boxmoe('bot_api') ) {

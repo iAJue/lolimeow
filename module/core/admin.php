@@ -3,6 +3,7 @@
  * @link https://www.boxmoe.com
  * @package lolimeow
  */
+defined('ABSPATH') or die('This file can not be loaded directly.');
 function custom_admin_styles() {
     echo '<style>
         .avatar{width: 60px;height: 60px;}

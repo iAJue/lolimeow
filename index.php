@@ -4,6 +4,7 @@
  * @link https://www.boxmoe.com
  */
 
+defined('ABSPATH') or die('This file can not be loaded directly.');
 get_header(); ?>
       <section class="section-blog-breadcrumb container fadein-bottom">
         <div class="breadcrumb-head">

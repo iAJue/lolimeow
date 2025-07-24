@@ -3,6 +3,7 @@
  * @link https://www.boxmoe.com
  * @package lolimeow
  */
+defined('ABSPATH') or die('This file can not be loaded directly.');
 
 if ( ! function_exists( 'boxmoe_comments_list' ) ) :
 	function boxmoe_comments_list( $comment, $args, $depth ) {

@@ -3,6 +3,7 @@
  * @link https://www.boxmoe.com
  * @package lolimeow
  */
+defined('ABSPATH') or die('This file can not be loaded directly.');
 // 处理头像
 add_action('admin_post_upload_avatar', 'boxmoe_avatar_upload');
 add_action('admin_post_nopriv_upload_avatar', 'boxmoe_avatar_upload');

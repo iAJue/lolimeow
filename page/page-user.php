@@ -4,6 +4,7 @@ Template Name: Boxmoe会员中心
 @link https://www.boxmoe.com
 @package lolimeow
 */
+defined('ABSPATH') or die('This file can not be loaded directly.');
 //error_reporting(0);
 if (session_status() == PHP_SESSION_NONE) {
    session_start();

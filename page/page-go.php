@@ -2,6 +2,7 @@
 /** 
 * Template Name: Boxmoe外链直跳版
 */
+defined('ABSPATH') or die('This file can not be loaded directly.');
 $my_urls = array(
 array('boxmoe','https://www.boxmoe.com'),
 array('jsmoe','https://www.jsmoe.com'),

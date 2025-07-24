@@ -3,6 +3,7 @@
  * @link https://www.boxmoe.com
  * @package lolimeow
  */
+defined('ABSPATH') or die('This file can not be loaded directly.');
 ?>
 <article class="post-list list-one row boxmoe-bg <?php echo boxmoe_border()?> <?php if (is_sticky()) { echo 'sticky-post'; } ?>">
   <?php if (is_sticky()) : ?>

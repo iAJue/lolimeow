@@ -4,6 +4,7 @@
  * @package lolimeow
  */
  
+defined('ABSPATH') or die('This file can not be loaded directly.');
  //解析短代码
 
 //H2设置标

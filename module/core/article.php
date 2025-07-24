@@ -3,6 +3,7 @@
  * @link https://www.boxmoe.com
  * @package lolimeow
  */
+defined('ABSPATH') or die('This file can not be loaded directly.');
 //列表翻页
 if ( ! function_exists( 'boxmoe_paging' ) ) :
 function boxmoe_paging() {

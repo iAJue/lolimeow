@@ -1,5 +1,5 @@
 <?php
-defined( 'ABSPATH' ) || exit;
+defined('ABSPATH') or die('This file can not be loaded directly.');
 $themedata = wp_get_theme();$themeversion = $themedata['Version'];define('THEME_VERSION', $themeversion);
 define( 'OPTIONS_FRAMEWORK_DIRECTORY', get_template_directory_uri() . '/module/panel/' );
 require_once dirname( __FILE__ ) . '/module/panel/options-framework.php';

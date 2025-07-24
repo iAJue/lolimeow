@@ -7,6 +7,7 @@
  * @package boxmoe
  */
 
+defined('ABSPATH') or die('This file can not be loaded directly.');
 get_header();
 ?>
 <main class="w-100">

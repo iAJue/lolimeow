@@ -4,7 +4,8 @@
  * @link https://www.boxmoe.com
  * @package lolimeow
  */
- get_header(); ?>
+defined('ABSPATH') or die('This file can not be loaded directly.');
+get_header(); ?>
       <section class="section-blog-breadcrumb container">
         <div class="breadcrumb-head">
           <span>
