@@ -403,7 +403,7 @@ div.tags a:hover{color:var(--box-333) !important;-webkit-transform:translate(-1p
 .comment-submit-btn-r{display:flex;flex:3;align-items:center;justify-content:flex-end}
 .comment-submit-btn-r img.avatar{width:2rem;height:2rem;object-fit:cover;border:2px solid var(--bs-light);border-radius:9999px;margin-right:5px;-webkit-transition:all 300ms cubic-bezier(.5,2.5,.7,.7);-o-transition:all 300ms cubic-bezier(.5,2.5,.7,.7);transition:all 300ms cubic-bezier(.5,2.5,.7,.7)}
 .comment-submit-btn-r img.avatar:hover{-webkit-box-shadow:2px 2px 0px 0px #333;box-shadow:2px 2px 0px 0px #333}
-#boxmoe_theme_footer{margin-top:2rem;letter-spacing:0.5px;font-size:.85rem;margin-bottom:2rem}
+#boxmoe_theme_footer{margin-top:2rem;letter-spacing:0.5px;font-size:.85rem;padding-bottom:2rem}
 #boxmoe_theme_footer,#boxmoe_theme_footer a{color:#333}
 #boxmoe_theme_footer a:hover{color:#ff4c60}
 #boxmoe_theme_footer .text-md-end a{color:#333;margin-right:5px;margin-top: 3px;}
@@ -606,3 +606,7 @@ a.btn-social:hover{background-color:#e0ecfc;color:var(--box-fff)}
 .snowflake {position: fixed;color: #fff;user-select: none;animation: fall linear;top: 0;}
 @keyframes fall {0% { transform: translateY(-20px) rotate(0deg); }100% { transform: translateY(100vh) rotate(360deg);}}
 .bangumi-item{display:flex;justify-content:center;flex-wrap:wrap}.bangumi-card{background-color:#fff;border-radius:8px;overflow:hidden;transition:transform 0.2s;width:100%;max-width:240px;text-align:center;padding:15px}.bangumi-card:hover{transform:translateY(-5px)}.bangumi-cover{width:100%;height:auto;border-bottom:1px solid #e9ecef;margin-bottom:15px;box-shadow:0 4px 8px rgba(0, 0, 0, 0.1);border-radius:8px}.bangumi-title{font-size:16px;margin:10px 0;color:#333;font-weight:bold}
+html.wp-dark-mode-active .blog-border:after{background-color: #1e1e1e!important;}
+html.wp-dark-mode-active .post-single pre.prettyprint{background: linear-gradient(0deg, #353535, #414141)!important;}
+html.wp-dark-mode-active .waves use {fill: #252b35;}
+html.wp-dark-mode-active .table > :not(caption) > * > *{background-color:transparent;box-shadow: none;}
