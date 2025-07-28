@@ -50,7 +50,7 @@ function _admin_comment_ctrlenter() {
 };
 //版权信息
 function example_footer_admin () {
-echo '<span id="footer-thankyou">感谢使用<a target="_blank" href="https://cn.wordpress.org/">WordPress</a>进行创作。Theme by <a target="_blank" href="https://www.boxmoe.com/" style="color:red;">Lolimeow</a></span> ';
+echo '<span id="footer-thankyou">感谢使用<a target="_blank" href="https://cn.wordpress.org/">WordPress</a>进行创作。Theme by <a target="_blank" href="https://github.com/iAJue/lolimeow/" style="color:red;">Lolimeow</a></span> ';
 }
 add_filter('admin_footer_text', 'example_footer_admin');
 //编辑器TinyMCE增强

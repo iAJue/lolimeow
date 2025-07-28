@@ -122,7 +122,7 @@ if(!isset($user_ID)) {
                                               <?php if ( is_user_logged_in() ):?>
                                                 <span type="button" data-bs-toggle="tooltip" data-bs-placement="top"
                                                 data-bs-title="当前[会员身份]:<?php echo $user_identity; ?>">
-                                                <?php $current_user = wp_get_current_user(); echo get_avatar( $current_user->user_id, 60); ?> 
+                                                <?php $current_user = wp_get_current_user(); echo get_avatar( $current_user->user_email, 60); ?> 
                                               </span><?php endif; ?>
                                               <?php comment_id_fields(); do_action('comment_form', $post->ID); ?>
                                              <button class="box-btn moe" name="submit" type="submit" id="submit" tabindex="5"><?php echo get_boxmoe('diy_comment_btn','发送评论') ?></button>
