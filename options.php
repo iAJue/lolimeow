@@ -920,10 +920,6 @@ $options[] = array(
 $options[] = array(
 	'name' => __('全站音乐', 'ui_boxmoe_com'),
 	'type' => 'heading');
-	$options[] = array(
-		'name' => __('说明', 'ui_boxmoe_com'),
-		'desc' => __('音乐功能接口已失效，目前暂时没有替代品请关闭', 'ui_boxmoe_com'),
-		'type' => 'info');	
 $options[] = array(
 	'name' => __('★ 全站底部音乐播放器开关', 'ui_boxmoe_com'),
 	'id' => 'music_on',
@@ -937,28 +933,18 @@ $options[] = array(
 	'type' => "radio",
 	'options' => array(
 		'netease' => __('1.网易云', 'ui_boxmoe_com'),
-		'tencent' => __('2.QQ音乐', 'ui_boxmoe_com'),			
-		'kugou' => __('3.酷狗', 'ui_boxmoe_com'),
-		'xiami' => __('4.虾米', 'ui_boxmoe_com'),
-		'baidu' => __('5.百度', 'ui_boxmoe_com')
+		'tencent' => __('2.QQ音乐', 'ui_boxmoe_com'),
+		'kugou' => __('3.酷狗音乐', 'ui_boxmoe_com'),
+		'xiami' => __('4.虾米音乐', 'ui_boxmoe_com'),
+		'baidu' => __('5.百度音乐', 'ui_boxmoe_com'),
 	));	
 $options[] = array(
 	'name' => __( '★ 歌单ID', 'ui_boxmoe_com' ),
-	'desc' => __('（歌单尽量不要那种超过100首的,API服务器可能会500）', 'ui_boxmoe_com'),		
+	'desc' => __('（歌单尽量不要那种超过100首的）', 'ui_boxmoe_com'),		
 	'id' => 'music_id',
-	'std' => '2765798464',
+	'std' => '10011009208',
 	'type' => 'text'
 );
-$options[] = array(
-	'name' => __('★歌单列表播放顺序', 'ui_boxmoe_com'),
-	'id' => 'music_order',
-	'std' => "list",
-	'type' => "radio",
-	'options' => array(
-		'list' => __('1.顺序播放', 'ui_boxmoe_com'),
-		'random' => __('2.随机播放', 'ui_boxmoe_com'),			
-	));
-
 	$options[] = array(
 		'name' => __('关于主题', 'ui_boxmoe_com'),
 		'type' => 'heading');

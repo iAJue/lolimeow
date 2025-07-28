@@ -20,6 +20,9 @@ defined('ABSPATH') or die('This file can not be loaded directly.');
           </div>
       </div>
       <?php } ?>
+      <?php if(get_boxmoe('music_on')){ ?>
+        <div id="player" class="aplayer aplayer-withlist aplayer-fixed" data-id="<?php echo get_boxmoe('music_id'); ?>" data-server="<?php echo get_boxmoe('music_server'); ?>" data-type="playlist" data-order="random" data-fixed="true" data-listfolded="true" data-theme="orange"></div>
+      <?php } ?>
       <section id="boxmoe_theme_footer">
         <hr class="horizontal dark">
         <footer class="small">

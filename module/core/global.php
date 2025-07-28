@@ -250,6 +250,9 @@ function boxmoe_load_scripts_and_styles() {
     if(get_boxmoe('loli')){
         wp_enqueue_style('theme-live2d-style', 'https://log.moejue.cn/live2d/assets/waifu.css', array(), null, false);
     }
+    if(get_boxmoe('music_on')){
+        wp_enqueue_style('theme-APlayer-style', boxmoe_themes_dir() . '/assets/css/APlayer.min.css', array(), null, false);
+    }
     wp_enqueue_script('custom-jquery', boxmoe_themes_dir() . '/assets/js/lib/jquery.min.js', array(), null, false);
     wp_enqueue_script('pjax', boxmoe_themes_dir() . '/assets/js/lib/jquery.pjax.min.js', array('custom-jquery'), null, false);
 }
@@ -261,6 +264,10 @@ function boxmoe_load_footer() {?>
         <script src="<?php echo boxmoe_themes_dir();?>/assets/emoji/src/js/emoji.list.js" type="text/javascript"></script>
         <script src="<?php echo get_template_directory_uri();?>/assets/js/comments.js" type="text/javascript"></script>
         <script src="<?php echo boxmoe_themes_dir();?>/assets/js/boxmoe.js" type="text/javascript" id="boxmoe_script"></script>	
+        <?php if(get_boxmoe('music_on')){ ?>
+        <script src="<?php echo boxmoe_themes_dir();?>/assets/js/APlayer.min.js" type="text/javascript"></script>
+        <script src="https://unpkg.com/meting@2.0.1/dist/Meting.min.js" type="text/javascript"></script>  
+        <?php } ?>
         <?php if(get_boxmoe('loli')){ ?>
         <script src="https://log.moejue.cn/live2d/assets/waifu-tips.js"></script>
         <script src="https://log.moejue.cn/live2d/assets/live2d.js"></script><?php } ?>
