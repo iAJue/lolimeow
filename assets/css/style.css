@@ -7,8 +7,8 @@ Author URI:https://www.boxmoe.com
 */
 @charset "UTF-8";
 @import url(theme.min.css);
-@import url(https://lf9-cdn-tos.bytecdntp.com/cdn/expire-2-M/font-awesome/4.7.0/css/font-awesome.min.css);
-@import url(https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/fancybox/3.5.7/jquery.fancybox.min.css);
+@import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css);
+@import url(https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css);
 @font-face{font-family:'boxmoe';src:url(../fonts/AlimamaFangYuanTiVF-Thin.woff2)}
 :root{--box-fff:#fff;--box-333:#333;--box-fill:rgba(255,255,255,0.3);--box-fill2:rgb(255 255 255 / 95%)}
 body{font-family:"boxmoe",Microsoft JhengHei,Georgia,Times,serif,Microsoft Yahei,Open Sans,sans-serif;font-size:15px;background-color:var(--bs-white);font-weight:400;color:#3b3b3b}
