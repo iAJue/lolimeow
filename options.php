@@ -93,13 +93,6 @@ function optionsframework_options() {
 		'std' => false,
 		);	
 	$options[] = array(
-		'name' => __('★ 悼念模式', 'ui_boxmoe_com'),
-		'id' => 'boxmoe_body_grey',
-		'desc' => __('（全站变灰）', 'ui_boxmoe_com'),
-		'type' => "checkbox",
-		'std' => false,
-		);
-	$options[] = array(
 		'name' => __('★ 节日红灯笼', 'ui_boxmoe_com'),
 		'id' => 'lantern',
 		'type' => "checkbox",
