@@ -271,14 +271,14 @@ function boxmoe_load_footer() {?>
         <?php if(get_boxmoe('loli')){ ?>
         <script src="https://log.moejue.cn/live2d/assets/waifu-tips.js"></script>
         <script src="https://log.moejue.cn/live2d/assets/live2d.js"></script><?php } ?>
-        <?php if (get_boxmoe('sakura')): ?>
+        <?php if (get_boxmoe('sakura')){ ?>
 <script src="<?php echo boxmoe_themes_dir();?>/assets/js/lib/sakura.js"></script>
-        <?php endif; ?>
-        <?php if (get_boxmoe('hitokoto_on')): ?>
+        <?php } ?>
 <script type="text/javascript">
   <?php if(get_boxmoe('snow')){ ?>
     setInterval(createSnowflake, 500);
     <?php } ?>
+        <?php if (get_boxmoe('hitokoto_on')){ ?>
                     var hitokoto = function () {
                     $.get("https://v1.hitokoto.cn/?c=<?php echo get_boxmoe('hitokoto_text')?>", {},
                         function (data) {
@@ -287,14 +287,15 @@ function boxmoe_load_footer() {?>
                     };
                     if ($("#hitokoto").length) {
                         hitokoto();
-                        $(document).on("pjax:complete", function () { 
+                        $(document).on("pjax:complete", function () {
                             hitokoto();
-                            initEmoji(); 
+                            initEmoji();
                             <?php if(get_boxmoe('loli')){ ?>
                             initLive2d();
                             <?php } ?>
                         });
                     }
+        <?php } ?>
                     var initEmoji = function () {
                         $("#btn").click(function () {
                             $("#comment").emoji({
@@ -305,16 +306,17 @@ function boxmoe_load_footer() {?>
                                 icons: emojiLists
                             });
                         });
-                    };initEmoji();
+                    };
+                    initEmoji();
                     <?php if( get_boxmoe('footer_time') ) {
-                    echo 'displayRunningTime("'.get_boxmoe('footer_time','').'");';}?>
+                        echo 'displayRunningTime("'.get_boxmoe('footer_time','').'");';
+                    }?>
                     <?php if(get_boxmoe('loli')){ ?>
                         var initLive2d = function(){ initModel("https://log.moejue.cn/live2d/assets/"); };
                         initLive2d();
                     <?php } ?>
                 </script>
-    <?php endif; ?>
-    <?php }   
+    <?php }
 //底部链接输出
 function boxmoe_footer_seo() {
 	if( get_boxmoe('footer_seo') ) {
