@@ -3,8 +3,6 @@
  * @link https://www.boxmoe.com
  * @package lolimeow
  */
-defined('ABSPATH') or die('This file can not be loaded directly.');
-session_start();
 if ( 'POST' != $_SERVER['REQUEST_METHOD'] ) {
 	header('Allow: POST');
 	header('HTTP/1.1 405 Method Not Allowed');
