@@ -4,9 +4,12 @@
  * @package lolimeow
  */
 defined('ABSPATH') or die('This file can not be loaded directly.');
+$has_ribbon = is_sticky() || ! empty( $GLOBALS['boxmoe_is_today_history'] );
 ?>
-<article class="post-list list-one row boxmoe-bg <?php echo boxmoe_border()?> <?php if (is_sticky()) { echo 'sticky-post'; } ?>">
-  <?php if (is_sticky()) : ?>
+<article class="post-list list-one row boxmoe-bg <?php echo boxmoe_border()?> <?php echo $has_ribbon ? 'sticky-post' : '' ?>">
+  <?php if ( ! empty( $GLOBALS['boxmoe_is_today_history'] ) ) : ?>
+    <div class="ribbon bg-warning">那年今日</div>
+  <?php elseif (is_sticky()) : ?>
     <div class="ribbon">置顶</div>
   <?php endif; ?>
   <div class="post-list-img col-lg-5 col-xl-5 col-md-12 col-12">

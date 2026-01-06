@@ -16,6 +16,7 @@ get_header(); ?>
         <div class="container">
           <div class="row">
             <div class="blog-post <?php echo boxmoe_blog_layout() ?> fadein-bottom">
+			        <?php boxmoe_today_history_posts(); ?>
 			        <?php while ( have_posts() ) : 
 			        the_post();
 			        get_template_part( 'module/template/blog-list');

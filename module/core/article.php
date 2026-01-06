@@ -262,6 +262,57 @@ function boxmoe_posts_related($title='', $limit=6, $model='thumb'){
     
 
 }
+
+/**
+ * Render the "That Day in History" block on the home page when enabled.
+ */
+function boxmoe_today_history_posts() {
+	if ( ! get_boxmoe('today_history_on') || ! is_home() || is_paged() ) {
+		return;
+	}
+
+	$month        = (int) current_time('n');
+	$day          = (int) current_time('j');
+	$current_year = (int) current_time('Y');
+
+	$history_query = new WP_Query(
+		array(
+			'post_type'           => 'post',
+			'posts_per_page'      => -1,
+			'ignore_sticky_posts' => true,
+			'orderby'             => 'date',
+			'order'               => 'DESC',
+			'date_query'          => array(
+				array(
+					'month' => $month,
+					'day'   => $day,
+				),
+			),
+		)
+	);
+
+	if ( ! $history_query->have_posts() ) {
+		return;
+	}
+
+	$GLOBALS['boxmoe_is_today_history']    = true;
+	$GLOBALS['boxmoe_today_history_badge'] = sprintf( __( '%1$s月%2$s日', 'ui_boxmoe_com' ), $month, $day );
+
+	while ( $history_query->have_posts() ) {
+		$history_query->the_post();
+		$post_year = (int) get_the_date('Y');
+
+		if ( $post_year >= $current_year ) {
+			continue;
+		}
+
+		get_template_part( 'module/template/blog-list' );
+	}
+	wp_reset_postdata();
+
+	unset( $GLOBALS['boxmoe_is_today_history'], $GLOBALS['boxmoe_today_history_badge'] );
+}
+
 function autoset_featured_image() {
     global $post;
     if (!is_object($post)) return;

@@ -422,6 +422,13 @@ $options[] = array(
 	'desc' => __('建议使用3 6 9 12这样排版', 'ui_boxmoe_com'),
 	'type' => 'text');		
 $options[] = array(
+	'name' => __('★ 首页那年今日开关', 'ui_boxmoe_com'),
+	'desc' => __('（开启后将在首页顶部显示历年同月同日的所有文章）', 'ui_boxmoe_com'),
+	'id' => 'today_history_on',
+	'type' => "checkbox",
+	'std' => false,
+	);
+$options[] = array(
 	'name' => __('★ 文章作者信息框', 'ui_boxmoe_com'),
 	'desc' => __('（位于文章内容下方）', 'ui_boxmoe_com'),		
 	'id' => 'open_author_info',
