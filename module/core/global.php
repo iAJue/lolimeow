@@ -445,10 +445,10 @@ add_action('wp_head', 'boxmoe_print_front_dark_mode_script', 1);
 
 // 前端载入
 function boxmoe_load_scripts_and_styles() {
-    wp_enqueue_style('theme-style', boxmoe_themes_dir() . '/assets/css/style.css', array(), time(), false);
+    wp_enqueue_style('theme-style', boxmoe_themes_dir() . '/assets/css/style.css', array(), null, false);
     $front_theme_mode = boxmoe_theme_mode();
     if (boxmoe_should_load_dark_mode_css($front_theme_mode)) {
-        wp_enqueue_style('theme-dark-style', boxmoe_themes_dir() . '/assets/css/dark.css', array('theme-style'), time(), 'all');
+        wp_enqueue_style('theme-dark-style', boxmoe_themes_dir() . '/assets/css/dark.css', array('theme-style'), null, 'all');
     }
     wp_enqueue_style('theme-emoji-style', boxmoe_themes_dir() . '/assets/emoji/src/css/jquery.emoji.css', array(), null, false);
     if(get_boxmoe('loli')){
