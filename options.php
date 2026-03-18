@@ -63,9 +63,13 @@ function optionsframework_options() {
 	$options[] = array(
 		'name' => __('★ 页面过度动画', 'ui_boxmoe_com'),
 		'id' => 'boxmoe_preloader',
-		'desc' => __('（开关）', 'ui_boxmoe_com'),
-		'type' => "checkbox",
-		'std' => true,
+		'std' => 'sakura',
+		'type' => 'radio',
+		'options' => array(
+			'none' => __('无', 'ui_boxmoe_com'),
+			'sakura' => __('樱花', 'ui_boxmoe_com'),
+			'cat' => __('猫', 'ui_boxmoe_com')
+		),
 		);
 	$options[] = array(
 		'name' => __('★ 开启看板娘', 'ui_boxmoe_com'),
