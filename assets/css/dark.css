@@ -466,6 +466,17 @@ html.wp-dark-mode-active .single-content a:hover img {
     filter: brightness(0.9) contrast(1.05) saturate(0.95);
 }
 
+/* Home post list images */
+html.wp-dark-mode-active .post-list.list-one .img-fluid,
+html.wp-dark-mode-active .post-list.list-one .post-list-img .zoom-img {
+    filter: brightness(0.82) contrast(1.04) saturate(0.92);
+}
+
+html.wp-dark-mode-active .post-list.list-one a:hover .img-fluid,
+html.wp-dark-mode-active .post-list.list-one a:hover .post-list-img .zoom-img {
+    filter: brightness(0.9) contrast(1.05) saturate(0.95);
+}
+
 html.wp-dark-mode-active .post-single pre.prettyprint ol.linenums {
     background: #1f2125 !important;
     border-color: #3f434b !important;
