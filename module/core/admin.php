@@ -10,6 +10,7 @@ function custom_admin_styles() {
     </style>';
 }
 add_action('admin_head', 'custom_admin_styles');
+
 function boxmoe_options_menu_filter($menu) {
 	$menu['mode'] = 'menu';
 	$menu['page_title'] = 'Boxmoe主题设置';

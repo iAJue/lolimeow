@@ -63,6 +63,11 @@ defined('ABSPATH') or die('This file can not be loaded directly.');
                       <i class="fa fa-search"></i>
                     </a>
                   </li>
+                  <li class="nav-item">
+                    <a href="#" id="theme-mode-toggle" class="nav-link theme-mode-toggle btn" aria-label="切换深色模式" title="切换深色模式">
+                      <i class="fa fa-moon-o"></i>
+                    </a>
+                  </li>
                   <?php if(get_boxmoe('sign_f')){ ?><?php if(!is_user_logged_in() ){ ?>
                   <li class="nav-item">
                     <div class="user-wrapper">

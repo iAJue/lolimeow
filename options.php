@@ -72,6 +72,17 @@ function optionsframework_options() {
 		),
 		);
 	$options[] = array(
+		'name' => __('★ 前台主题模式', 'ui_boxmoe_com'),
+		'id' => 'front_theme_mode',
+		'std' => 'auto',
+		'type' => 'radio',
+		'options' => array(
+			'auto' => __('自动（跟随系统）', 'ui_boxmoe_com'),
+			'light' => __('浅色', 'ui_boxmoe_com'),
+			'dark' => __('深色', 'ui_boxmoe_com')
+		),
+		);
+	$options[] = array(
 		'name' => __('★ 开启看板娘', 'ui_boxmoe_com'),
 		'id' => 'loli',
 		'desc' => __('（开启后看板娘会出现在页面左下角）', 'ui_boxmoe_com'),

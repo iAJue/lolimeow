@@ -318,9 +318,138 @@ function boxmoe_logo(){
     return  $src;
 }
 
+// 主题模式：auto / light / dark
+function boxmoe_theme_mode() {
+    $mode = get_boxmoe('front_theme_mode', 'auto');
+    return in_array($mode, array('auto', 'light', 'dark'), true) ? $mode : 'auto';
+}
+
+function boxmoe_should_load_dark_mode_css($mode) {
+    return 'light' !== $mode;
+}
+
+function boxmoe_print_dark_mode_script($mode = 'auto', $allow_user_override = false) {
+    $mode = in_array($mode, array('auto', 'light', 'dark'), true) ? $mode : 'auto';
+    $allow_user_override = (bool) $allow_user_override;
+    ?>
+<script id="boxmoe-dark-mode-script">
+(function () {
+    var defaultMode = '<?php echo esc_js($mode); ?>';
+    var allowUserOverride = <?php echo $allow_user_override ? 'true' : 'false'; ?>;
+    var storageKey = 'boxmoe_front_theme_mode';
+    var root = document.documentElement;
+    var mql = window.matchMedia('(prefers-color-scheme: dark)');
+    var currentMode = defaultMode;
+    var overlay = null;
+
+    if (allowUserOverride) {
+        var savedMode = window.localStorage.getItem(storageKey);
+        if (savedMode === 'auto' || savedMode === 'light' || savedMode === 'dark') {
+            currentMode = savedMode;
+        }
+    }
+
+    var getTargetDark = function (mode) {
+        return mode === 'dark' || (mode === 'auto' && mql.matches);
+    };
+
+    var applyMode = function () {
+        var isDark = getTargetDark(currentMode);
+        root.classList.toggle('wp-dark-mode-active', isDark);
+        if (isDark) {
+            root.setAttribute('data-bs-theme', 'dark');
+        } else {
+            root.removeAttribute('data-bs-theme');
+        }
+        window.dispatchEvent(new CustomEvent('boxmoe:theme-change', {
+            detail: {
+                mode: currentMode,
+                isDark: isDark
+            }
+        }));
+    };
+
+    var ensureOverlay = function () {
+        if (overlay) {
+            return overlay;
+        }
+        overlay = document.querySelector('.boxmoe-theme-sweep-overlay');
+        if (!overlay) {
+            overlay = document.createElement('div');
+            overlay.className = 'boxmoe-theme-sweep-overlay';
+            (document.body || document.documentElement).appendChild(overlay);
+        }
+        return overlay;
+    };
+
+    var playThemeSweep = function (nextMode, done) {
+        var el = ensureOverlay();
+        el.classList.remove('is-dark', 'is-light', 'is-active');
+        el.classList.add(getTargetDark(nextMode) ? 'is-dark' : 'is-light');
+        window.requestAnimationFrame(function () {
+            el.classList.add('is-active');
+        });
+        window.setTimeout(function () {
+            done();
+        }, 780);
+        window.setTimeout(function () {
+            el.classList.remove('is-active', 'is-dark', 'is-light');
+        }, 1500);
+    };
+
+    applyMode();
+    mql.addEventListener('change', function () {
+        if (currentMode === 'auto') {
+            applyMode();
+        }
+    });
+
+    window.boxmoeTheme = {
+        getMode: function () {
+            return currentMode;
+        },
+        isDark: function () {
+            return root.classList.contains('wp-dark-mode-active');
+        },
+        setMode: function (mode, withAnimation) {
+            if (mode !== 'auto' && mode !== 'light' && mode !== 'dark') {
+                return currentMode;
+            }
+            var applyNextMode = function () {
+                currentMode = mode;
+                if (allowUserOverride) {
+                    window.localStorage.setItem(storageKey, currentMode);
+                }
+                applyMode();
+            };
+            if (withAnimation) {
+                playThemeSweep(mode, applyNextMode);
+            } else {
+                applyNextMode();
+            }
+            return mode;
+        },
+        toggle: function () {
+            return this.setMode(this.isDark() ? 'light' : 'dark', true);
+        }
+    };
+})();
+</script>
+    <?php
+}
+
+function boxmoe_print_front_dark_mode_script() {
+    boxmoe_print_dark_mode_script(boxmoe_theme_mode(), true);
+}
+add_action('wp_head', 'boxmoe_print_front_dark_mode_script', 1);
+
 // 前端载入
 function boxmoe_load_scripts_and_styles() {
-    wp_enqueue_style('theme-style', boxmoe_themes_dir() . '/assets/css/style.css', array(), null, false);
+    wp_enqueue_style('theme-style', boxmoe_themes_dir() . '/assets/css/style.css', array(), time(), false);
+    $front_theme_mode = boxmoe_theme_mode();
+    if (boxmoe_should_load_dark_mode_css($front_theme_mode)) {
+        wp_enqueue_style('theme-dark-style', boxmoe_themes_dir() . '/assets/css/dark.css', array('theme-style'), time(), 'all');
+    }
     wp_enqueue_style('theme-emoji-style', boxmoe_themes_dir() . '/assets/emoji/src/css/jquery.emoji.css', array(), null, false);
     if(get_boxmoe('loli')){
         wp_enqueue_style('theme-live2d-style', 'https://log.moejue.cn/live2d/assets/waifu.css', array(), null, false);
@@ -364,6 +493,36 @@ function boxmoe_load_footer() {?>
                         hitokoto();
                     }
   <?php endif; ?>
+                    var updateThemeToggleButton = function () {
+                        var button = document.getElementById('theme-mode-toggle');
+                        if (!button) {
+                            return;
+                        }
+                        var icon = button.querySelector('i');
+                        var isDark = window.boxmoeTheme.isDark();
+                        if (icon) {
+                            icon.className = isDark ? 'fa fa-sun-o' : 'fa fa-moon-o';
+                        }
+                        var tip = isDark ? '切换到浅色模式' : '切换到深色模式';
+                        button.setAttribute('title', tip);
+                        button.setAttribute('aria-label', tip);
+                    };
+                    var bindThemeToggleButton = function () {
+                        var button = document.getElementById('theme-mode-toggle');
+                        if (!button) {
+                            return;
+                        }
+                        if (button.getAttribute('data-theme-toggle-bound') !== '1') {
+                            button.setAttribute('data-theme-toggle-bound', '1');
+                            button.addEventListener('click', function (event) {
+                                event.preventDefault();
+                                window.boxmoeTheme.toggle();
+                            });
+                        }
+                        updateThemeToggleButton();
+                    };
+                    window.addEventListener('boxmoe:theme-change', updateThemeToggleButton);
+                    bindThemeToggleButton();
                     $(document).on("pjax:complete", function () {
                         <?php if (get_boxmoe('hitokoto_on')): ?>
                         if ($("#hitokoto").length) {
@@ -374,6 +533,7 @@ function boxmoe_load_footer() {?>
                         <?php if(get_boxmoe('loli')){ ?>
                         initLive2d();
                         <?php } ?>
+                        bindThemeToggleButton();
                     });
                     var initEmoji = function () {
                         $("#btn").click(function () {
@@ -386,6 +546,7 @@ function boxmoe_load_footer() {?>
                             });
                         });
                     };initEmoji();
+                    bindThemeToggleButton();
   <?php if( get_boxmoe('footer_time') ) {
     echo 'displayRunningTime("'.get_boxmoe('footer_time','').'");';}?>
   <?php if(get_boxmoe('loli')){ ?>
