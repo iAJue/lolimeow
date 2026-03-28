@@ -16,8 +16,10 @@ defined('ABSPATH') or die('This file can not be loaded directly.');
 <div class="offcanvas-body flex-column">	
 <?php 
 if (function_exists('dynamic_sidebar') && dynamic_sidebar('widget_sitesidebar')) : endif; 
-
-if (is_single()){
+if (is_tag()){
+    if (function_exists('dynamic_sidebar') && dynamic_sidebar('widget_sidebar')) : endif;
+}
+else if (is_single()){
 	if (function_exists('dynamic_sidebar') && dynamic_sidebar('widget_postsidebar')) : endif; 
 }
 else if (is_page()){
