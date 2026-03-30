@@ -130,6 +130,98 @@
         if ($(".prettyprint").length) {
             window.prettyPrint && prettyPrint();
         }
+        var fancyboxOptions = {
+            loop: true,
+            arrows: true,
+            animationEffect: "fade",
+            transitionEffect: "slide",
+            caption: function(instance, item) {
+                return $(this).data('caption');
+            },
+            keyboard: true,
+            toolbar: true,
+            infobar: true,
+            buttons: [
+                'zoom',
+                'slideShow',
+                'fullScreen',
+                'thumbs',
+                'close'
+            ],
+            thumbs: {
+                autoStart: true
+            },
+            slideShow: {
+                autoStart: false,
+                speed: 3000
+            },
+            fullScreen: {
+                autoStart: false
+            },
+            hash: true
+        };
+
+        var initPostImageLightbox = function(){
+            $(".single-content img").each(function(){
+                var $img = $(this);
+                if ($img.closest("a").length) {
+                    return;
+                }
+
+                var realSrc =
+                    $img.attr("data-src") ||
+                    $img.attr("data-original") ||
+                    $img.attr("data-lazy-src") ||
+                    $img.attr("src");
+
+                if (!realSrc || realSrc.indexOf("data:image") === 0) {
+                    $img.removeClass("boxmoe-fancybox-image");
+                    $img.removeAttr("data-boxmoe-fancybox-src");
+                    return;
+                }
+
+                $img.addClass("boxmoe-fancybox-image");
+                $img.attr("data-boxmoe-fancybox-src", realSrc);
+                $img.css("cursor", "zoom-in");
+            });
+
+            $("body")
+                .off("click.boxmoePostImageLightbox", ".single-content img.boxmoe-fancybox-image")
+                .on("click.boxmoePostImageLightbox", ".single-content img.boxmoe-fancybox-image", function (event) {
+                    event.preventDefault();
+
+                    var $current = $(this);
+                    var $images = $(".single-content img.boxmoe-fancybox-image");
+                    var items = [];
+                    var currentIndex = 0;
+
+                    $images.each(function(index){
+                        var $img = $(this);
+                        var src = $img.attr("data-boxmoe-fancybox-src");
+                        if (!src) {
+                            return;
+                        }
+
+                        var caption = $img.attr("alt") || "";
+                        items.push({
+                            src: src,
+                            opts: {
+                                caption: caption
+                            }
+                        });
+
+                        if (this === $current[0]) {
+                            currentIndex = items.length - 1;
+                        }
+                    });
+
+                    if (items.length && $.fancybox) {
+                        $.fancybox.open(items, fancyboxOptions, currentIndex);
+                    }
+                });
+        };
+        initPostImageLightbox();
+
         var copycode = function(){
             for (var i = 0; i < $('#boxmoe_theme_container pre').length; i++) {
                 $('#boxmoe_theme_container pre').eq(i).prepend('<div class="btn-copy"><span class="single-copy copy" data-clipboard-target="#copy'+ i +'" title="点击复制本段代码"><i class="fa fa-files-o"></i> 复制代码</span></div>');
@@ -149,37 +241,7 @@
         };copycode();
 
 
-        $("[data-fancybox]").fancybox({
-            loop: true,
-            arrows: true,
-            animationEffect: "fade",
-            transitionEffect: "slide",
-            caption: function(instance, item) {
-                return $(this).data('caption');
-            },
-            keyboard: true,
-            toolbar: true,
-            infobar: true,
-            buttons: [
-                'zoom',
-                'slideShow',
-                'fullScreen',
-                'download',
-                'thumbs',
-                'close'
-            ],
-            thumbs: {
-                autoStart: true
-            },
-            slideShow: {
-                autoStart: false,
-                speed: 3000
-            },
-            fullScreen: {
-                autoStart: false
-            },
-            hash: true
-        });
+        $("[data-fancybox]").fancybox(fancyboxOptions);
         $('body').on('click','.dropdown-smilie a',
             function() {
                 var ab = $(this).attr('href');// 抓取href内的值
