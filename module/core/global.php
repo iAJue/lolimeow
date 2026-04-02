@@ -318,6 +318,72 @@ function boxmoe_logo(){
     return  $src;
 }
 
+function boxmoe_get_multilang_links() {
+    $default_links = array(
+        array('name' => 'English', 'url' => 'https://en.moejue.cn/'),
+        array('name' => '简体中文', 'url' => 'https://zh.moejue.cn/'),
+        array('name' => '日本語', 'url' => 'https://ja.moejue.cn/'),
+        array('name' => '繁體中文', 'url' => 'https://tw.moejue.cn/'),
+    );
+    $default_raw = implode("\n", array(
+        'English|https://en.moejue.cn/',
+        '简体中文|https://zh.moejue.cn/',
+        '日本語|https://ja.moejue.cn/',
+        '繁體中文|https://tw.moejue.cn/',
+    ));
+
+    $raw = get_boxmoe('banner_multilang_links', '');
+    $raw = trim((string) $raw);
+    if ($raw === '') {
+        $raw = $default_raw;
+    }
+
+    $lines = preg_split('/\r\n|\r|\n/', $raw);
+    $links = array();
+    foreach ($lines as $line) {
+        $line = trim(wp_strip_all_tags($line));
+        if ($line === '' || strpos($line, '|') === false) {
+            continue;
+        }
+        list($name, $url) = array_map('trim', explode('|', $line, 2));
+        if ($name === '' || $url === '') {
+            continue;
+        }
+        if (!preg_match('#^https?://#i', $url)) {
+            $url = 'https://' . ltrim($url, '/');
+        }
+        $url = esc_url_raw($url);
+        if ($url === '') {
+            continue;
+        }
+        $links[] = array(
+            'name' => $name,
+            'url' => $url,
+        );
+    }
+
+    return !empty($links) ? $links : $default_links;
+}
+
+function boxmoe_render_header_language_dropdown() {
+    if (!get_boxmoe('banner_multilang_switch')) {
+        return;
+    }
+    $links = boxmoe_get_multilang_links();
+    if (empty($links)) {
+        return;
+    }
+    echo '<li class="nav-item dropdown boxmoe-header-lang">';
+    echo '<a href="#" class="nav-link dropdown-toggle btn" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="切换语言" aria-label="切换语言">';
+    echo '<i class="fa fa-language"></i></a>';
+    echo '<ul class="dropdown-menu dropdown-menu-end">';
+    foreach ($links as $link) {
+        echo '<li><a href="' . esc_url($link['url']) . '" class="dropdown-item" target="_blank" rel="noopener noreferrer">' . esc_html($link['name']) . '</a></li>';
+    }
+    echo '</ul>';
+    echo '</li>';
+}
+
 // 主题模式：auto / light / dark
 function boxmoe_theme_mode() {
     $mode = get_boxmoe('front_theme_mode', 'auto');

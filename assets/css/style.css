@@ -69,6 +69,8 @@ to{top:0}
 #boxmoe_theme_header .navbar .navbar-nav .nav-item .nav-link.search i{margin-right:0}
 #boxmoe_theme_header .navbar .navbar-nav .nav-item .nav-link.theme-mode-toggle i{margin-right:0}
 #boxmoe_theme_header .navbar .navbar-nav .nav-item .nav-link.theme-mode-toggle{cursor:pointer}
+#boxmoe_theme_header .navbar .navbar-nav .boxmoe-header-lang .dropdown-menu{min-width:170px}
+#boxmoe_theme_header .navbar .navbar-nav .boxmoe-header-lang .dropdown-toggle:after{display:none}
 #boxmoe_theme_header .logo,#boxmoe_theme_footer .logo,.blog-sidebar .logo{height: 45px;}
 #boxmoe_theme_header .logo{height: 65px;}
 .section-blog-cover{height:800px;background-size:cover;background-position:30% 30%;position:relative;overflow:hidden}

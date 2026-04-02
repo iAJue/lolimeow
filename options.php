@@ -295,6 +295,21 @@ $options[] = array(
 		'std' => "",
 		'class' => 'hidden',
 		'type' => 'text');
+	$options[] = array(
+		'name' => __('★ 多语言地址开关', 'ui_boxmoe_com'),
+		'desc' => __('（开启后在前端导航暗黑模式按钮右侧显示多语言下拉）', 'ui_boxmoe_com'),
+		'id' => 'banner_multilang_switch',
+		'type' => "checkbox",
+		'std' => false,
+		);
+	$options[] = array(
+		'name' => __('★ 多语言名称和地址', 'ui_boxmoe_com'),
+		'desc' => __('每行一条，格式：语言名称|https://domain.com', 'ui_boxmoe_com'),
+		'id' => 'banner_multilang_links',
+		'std' => "English|https://en.moejue.cn/\n简体中文|https://zh.moejue.cn/\n日本語|https://ja.moejue.cn/\n繁體中文|https://tw.moejue.cn/",
+		'settings' => array('rows' => 6),
+		'class' => 'hidden',
+		'type' => 'textarea');
 //==========================================================================================
 	$options[] = array(
 		'name' => __( 'SEO设置', 'ui_boxmoe_com' ),

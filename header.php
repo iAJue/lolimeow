@@ -68,6 +68,7 @@ defined('ABSPATH') or die('This file can not be loaded directly.');
                       <i class="fa fa-moon-o"></i>
                     </a>
                   </li>
+                  <?php boxmoe_render_header_language_dropdown(); ?>
                   <?php if(get_boxmoe('sign_f')){ ?><?php if(!is_user_logged_in() ){ ?>
                   <li class="nav-item">
                     <div class="user-wrapper">

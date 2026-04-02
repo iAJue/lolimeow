@@ -57,7 +57,14 @@ jQuery(document).ready(function() {
 
 	if (jQuery('#banner_api_on:checked').val() !== undefined) {
 		jQuery('#section-banner_api_url').show();
-	}	
+	}
+	jQuery('#banner_multilang_switch').click(function() {
+  		jQuery('#section-banner_multilang_links').fadeToggle(400);
+	});
+
+	if (jQuery('#banner_multilang_switch:checked').val() !== undefined) {
+		jQuery('#section-banner_multilang_links').show();
+	}
 	jQuery('#open_author_info').click(function() {
   		jQuery('#section-authorinfo').fadeToggle(400);
 	});
