@@ -9,11 +9,19 @@ class widget_ads extends WP_Widget {
 	function widget( $args, $instance ) {
 		extract( $args );
 
-		$title = apply_filters('widget_name', $instance['title']);
-		$code = $instance['code'];
+		$title = isset($instance['title']) ? apply_filters('widget_name', $instance['title']) : '';
+		$code = isset($instance['code']) ? $instance['code'] : '';
+		$show_title = trim((string) $title) !== '';
+		$widget_wrapper = $before_widget;
 
-		echo $before_widget;
-		echo '<H4 class="widget-title">'.$title.'</H4>';
+		if (!$show_title) {
+			$widget_wrapper = preg_replace('/class="/', 'class="widget-no-title ', $before_widget, 1);
+		}
+
+		echo $widget_wrapper;
+		if ($show_title) {
+			echo '<H4 class="widget-title">'.$title.'</H4>';
+		}
 		echo '<div class="widget_ads_inner">'.$code.'</div>';
 		echo $after_widget;
 	}

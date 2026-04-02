@@ -124,6 +124,7 @@ div.tags a:hover{color:var(--box-333) !important;-webkit-transform:translate(-1p
 .blog-sidebar .widget ul a{color:#333;transition:var(--transition)}
 .blog-sidebar .widget a:hover{color:#ff5c72}
 .blog-sidebar .widget{padding:30px 25px;padding-top:45px;position:relative;border-radius:var(--bs-border-radius-lg) !important;margin-bottom:50px;width:auto;float:none;background-color:var(--box-fff)}
+.blog-sidebar .widget.widget-no-title{padding:0}
 .blog-sidebar .widget ul{margin-left:-1.5rem}
 .blog-sidebar .widget-title{letter-spacing:0.25px;position:absolute;left:25px;top:-15px;z-index:2;padding:4px 20px;background:#fff;border:1px solid rgba(39,39,39,0.75);border-radius:100px;font-size:0.85rem}
 .blog-sidebar .blog-border .widget-title{border:1px solid rgba(39,39,39,0.75)}
